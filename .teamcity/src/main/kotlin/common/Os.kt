@@ -55,14 +55,14 @@ enum class Os(
 
     fun asName() = name.lowercase().toCapitalized()
 
-    fun javaInstallationLocations(): String {
+    fun javaInstallationLocations(arch: Arch = Arch.AMD64): String {
         val paths = enumValues<JvmVersion>().joinToString(",") { version ->
             val vendor = when {
                 version.major >= 11 -> JvmVendor.openjdk
                 else -> JvmVendor.oracle
             }
-            javaHome(DefaultJvm(version, vendor), this)
-        } + ",${javaHome(DefaultJvm(JvmVersion.java8, JvmVendor.openjdk), this)}"
+            javaHome(DefaultJvm(version, vendor), this, arch)
+        } + ",${javaHome(DefaultJvm(JvmVersion.java8, JvmVendor.openjdk), this, arch)}"
         return """"-Porg.gradle.java.installations.paths=$paths""""
     }
 }

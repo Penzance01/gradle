@@ -43,7 +43,7 @@ enum class StageName(val stageName: String, val description: String, val uuid: S
 private val performanceRegressionTestCoverages = listOf(
     PerformanceTestCoverage(1, PerformanceTestType.per_commit, Os.LINUX, numberOfBuckets = 50, oldUuid = "PerformanceTestTestLinux"),
     PerformanceTestCoverage(6, PerformanceTestType.per_commit, Os.WINDOWS, numberOfBuckets = 10, failsStage = false),
-    PerformanceTestCoverage(7, PerformanceTestType.per_commit, Os.MACOS, numberOfBuckets = 5, failsStage = false)
+    PerformanceTestCoverage(7, PerformanceTestType.per_commit, Os.MACOS, Arch.AARCH64, numberOfBuckets = 5, failsStage = false)
 )
 
 private val slowPerformanceTestCoverages = listOf(
